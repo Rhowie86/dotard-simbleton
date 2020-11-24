@@ -12,3 +12,13 @@ export const businessList = () => {
     )
         
     }
+
+  
+export const newYorkList = () => { 
+        const contentElement = document.querySelector(".container")
+        const allBusinesses = useBusiness()
+
+    // (businessObject) => {
+        allBusinesses.filter((businessOject) =>  { businessObject.addressStateCode === "NY" ?  contentElement.innerHTML += business(businessObject) : false  
+        })
+}
