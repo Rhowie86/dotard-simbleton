@@ -13,12 +13,16 @@ export const businessList = () => {
         
     }
 
-  
-export const newYorkList = () => { 
-        const contentElement = document.querySelector(".container")
-        const allBusinesses = useBusiness()
 
-    // (businessObject) => {
-        allBusinesses.filter((businessOject) =>  { businessObject.addressStateCode === "NY" ?  contentElement.innerHTML += business(businessObject) : false  
-        })
+export const newYorkList = () => { 
+        const contentElement = document.querySelector(".newYork")
+        const allBusinesses = useBusiness()
+        
+        const nyBusinesses = allBusinesses.filter(business => business.addressStateCode === "NY")
+        // console.log("testing testing", nyBusinesses)
+        nyBusinesses.forEach(
+            (nyObject) => {
+                contentElement.innerHTML += business(nyObject)
+            }
+        )
 }
