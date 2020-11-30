@@ -29,12 +29,13 @@ export const newYorkList = () => {
 
 
 // Place an article element in your HTML with the class below
-const companySearchResultArticle = document.querySelector(".foundCompanies")
+const companySearchResultArticle = document.querySelector("#foundCompanies")
 
 document
     .querySelector("#companySearch")
     .addEventListener("keypress", keyPressEvent => {
-        if (keyPressEvent.charCode === 13) {
+        if (keyPressEvent.charCode === 13) { 
+            
             /*
                 When user presses enter, find the matching business.
                 You can use the `.includes()` method strings to
@@ -44,12 +45,20 @@ document
                     business.companyName.includes(keyPressEvent.target.value)
             */
 
-            const foundBusiness = // implement .find() method here
-
-            companySearchResultArticle.innerHTML = `
+            const allBusinesses = useBusiness()
+            const foundBusiness = allBusinesses.find(agent => agent.purchasingAgent.nameFirst.includes(keyPressEvent.target.value) 
+            || agent.purchasingAgent.nameLast.includes(keyPressEvent.target.value) 
+            || agent.companyName.includes(keyPressEvent.target.value))
+           
+           
+            // implement .find() method here
+                companySearchResultArticle.innerHTML = `
                 <h2>
-                ${foundBusiness.companyName}
+                ${foundBusiness.purchasingAgent.nameFirst}, ${foundBusiness.purchasingAgent.nameLast}
                 </h2>
+                <h3>
+                ${foundBusiness.companyName}
+                </h3>
                 <section>
                 ${foundBusiness.addressFullStreet}
 
